@@ -1,0 +1,45 @@
+<ion-view title="Inserir Usuários">
+	<ion-content class="padding">
+		
+		<span class="success" ng-show="sucesso">Dados salvos com sucesso</span>
+
+		<form name="frmUsuario" ng-submit="salvar(frmUsuario.$valid, Usuario)" novalidate> <!-- O novalidate é para retirar a validação padrão do HTML5 -->
+			<div class="padding">
+				<label class="item item-input">
+					<input type="text" placeholder="Nome" name="nome" ng-model="Usuario.nome" ng-minlength="5" required>
+		      	</label><!-- Ocultar o submitted -->
+		      	<span class="error" ng-show="frmUsuario.nome.$error.required && frmUsuario.$submitted">O campo nome é obrigatório.</span>
+				<small class="error" ng-show="frmUsuario.nome.$error.minlength">Devem ser preenchidos no mínimo 5 caracteres</small>
+	      	</div>
+	      	
+	      	<div class="padding">
+		      	<label class="item item-input">
+					<input type="email" name="email" placeholder="E-mail" ng-model="Usuario.email" required>
+		      	</label>
+		      	<span class="error" ng-show="frmUsuario.email.$error.required && frmUsuario.$submitted">O campo E-mail é obrigatório.</span>
+				<small class="error" ng-show="frmUsuario.email.$error.email">O formato do e-mail está inválido</small>
+	      	</div>
+
+	      	<div class="padding">
+		      	<label class="item item-input">
+					<input type="password" placeholder="Senha" ng-model="Usuario.senha" required><!-- Ocultar o "nome='senha'" -->
+					<span class="error" ng-show="frmUsuario.senha.$error.required">O campo Senha é obrigatório.</span>
+		      	</label>
+	      	</div>
+
+	      	<div class="padding">
+		      	<label class="item item-input">
+					<input type="url" placeholder="Site" name="site" ng-model="Usuario.site" required>
+		      	</label>
+		      	<span class="error" ng-show="frmUsuario.site.$error.required && frmUsuario.$submitted">O campo Site é obrigatório.</span>
+		      	<span class="error" ng-show="frmUsuario.site.$error.url">O campo Site não é um endereço válido.</span>
+	      	</div>
+
+	      	<div class="padding">
+	          <button type="submit" class="button button-block button-positive">Salvar</button>
+	          <button type="button" class="button button-block button-positive" ng-click="reset(frmUsuario)">Novo</button>
+	        </div>
+        </form>
+
+	</ion-content>
+</ion-view>
